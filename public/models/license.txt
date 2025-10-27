@@ -1,0 +1,11 @@
+Model Information:
+* title:	Green Bike wheel
+* source:	https://sketchfab.com/3d-models/green-bike-wheel-c635367fce66491f82fcc5104cef938e
+* author:	Daniele Caccavale (https://sketchfab.com/dany3design)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Green Bike wheel" (https://sketchfab.com/3d-models/green-bike-wheel-c635367fce66491f82fcc5104cef938e) by Daniele Caccavale (https://sketchfab.com/dany3design) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

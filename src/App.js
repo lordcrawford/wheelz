@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import MyThree from './Three';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MyThree />
+      <p><b>spinning wheels - Lord Crawford</b></p>
+      <p><i>3d bike model made by Daniele Caccavale</i></p> 
+      {/* https://sketchfab.com/3d-models/green-bike-wheel-c635367fce66491f82fcc5104cef938e */}
     </div>
   );
 }

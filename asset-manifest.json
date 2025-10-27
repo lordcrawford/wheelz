@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wheelz/static/css/main.9e0e4df8.css",
-    "main.js": "/wheelz/static/js/main.f9e1ca08.js",
+    "main.js": "/wheelz/static/js/main.ae42ff08.js",
     "static/js/453.fbd24a79.chunk.js": "/wheelz/static/js/453.fbd24a79.chunk.js",
     "index.html": "/wheelz/index.html",
     "main.9e0e4df8.css.map": "/wheelz/static/css/main.9e0e4df8.css.map",
-    "main.f9e1ca08.js.map": "/wheelz/static/js/main.f9e1ca08.js.map",
+    "main.ae42ff08.js.map": "/wheelz/static/js/main.ae42ff08.js.map",
     "453.fbd24a79.chunk.js.map": "/wheelz/static/js/453.fbd24a79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9e0e4df8.css",
-    "static/js/main.f9e1ca08.js"
+    "static/js/main.ae42ff08.js"
   ]
 }

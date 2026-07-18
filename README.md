@@ -1,3 +1,3 @@
-# spinning wheels - Lord Crawford
+# cadence - Lord Crawford
 
 3d bike model made by Daniele Caccavale

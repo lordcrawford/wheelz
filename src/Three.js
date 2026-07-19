@@ -8,13 +8,33 @@ function MyThree() {
   useEffect(() => {
     // Store ref in variable for cleanup
     const container = containerRef.current;
-    
+
     // Scene setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10000);
+    const BASE_FOV = 50; // degrees - matches original framing on wide/landscape viewports
+    const BASE_HORIZONTAL_TAN = Math.tan(THREE.MathUtils.degToRad(BASE_FOV / 2));
+    const camera = new THREE.PerspectiveCamera(BASE_FOV, 1, 0.1, 10000);
+
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0xe5e5e5, 1); // Light grey background
+
+    // Size against the container's own box (not the full window) so the
+    // render isn't taller than the space it's actually shown in, which was
+    // pushing the scene off-center. Also widen the vertical FOV on
+    // narrow/portrait containers so the horizontal field of view (and
+    // therefore the wheels' width) stays consistent instead of cropping.
+    const updateCameraAndSize = () => {
+      const width = container ? container.clientWidth : window.innerWidth;
+      const height = container ? container.clientHeight : window.innerHeight;
+      const aspect = width / height;
+      camera.aspect = aspect;
+      camera.fov = aspect >= 1
+        ? BASE_FOV
+        : THREE.MathUtils.radToDeg(2 * Math.atan(BASE_HORIZONTAL_TAN / aspect));
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+    updateCameraAndSize();
     
     // Add renderer to container
     if (container) {
@@ -86,17 +106,18 @@ function MyThree() {
         // Position camera to view all wheels - brought closer
         const diagonalSize = Math.sqrt(size.x ** 2 + size.y ** 2 + size.z ** 2);
         const safeDistance = diagonalSize * 2.3 * 4; // Reduced multiplier to bring camera closer
-        camera.position.set(0, size.y * 0.1 * 4, safeDistance * 0.8); // Closer to the scene
-        camera.lookAt(0, 0, 0);
+        camera.position.set(0, 0, safeDistance * 0.8); // Straight-on, no vertical tilt, so the wheels sit centered in frame
+        const isPortrait = container ? container.clientWidth < container.clientHeight : window.innerWidth < window.innerHeight;
+        // Mobile: nudge view right a bit. Desktop: keep the original centered framing.
+        const horizontalLookAt = isPortrait ? -safeDistance * 0.011 : 0;
+        camera.lookAt(horizontalLookAt, 0, 0);
         
       }
     );
     
     // Handle window resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      updateCameraAndSize();
     };
     window.addEventListener('resize', handleResize);
     
